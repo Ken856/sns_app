@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
+
   def index
     @user = User.all
   end
@@ -23,17 +26,43 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(pareams[:id])
+    @user = User.find(params[:id])
   end
 
   def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(user_params)
+      flash[:notice] = "保存しました"
+      redirect_to user
+    else
+      render 'edit'
+    end
   end
 
   def destroy
+    user = User.find(params[:id])
+    user.destroy
+    flash[:success] = "退会しました"
+    redirect_to users_url
   end
 
   private
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    end
+
+    def logged_in_user
+      unless logged_in?
+        store_location
+        flash[:danger] = "Please log in"
+        redirect_to login_url
+      end
+    end
+
+    def correct_user
+      @user = User.find(params[:id])
+      unless current_user?(@user)
+        redirect_to root_url
+      end
     end
 end
