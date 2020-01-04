@@ -1,17 +1,15 @@
-<header class="nav">
-  <div class="container">
-    <nav>
-      <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Home", root_path %></li>
+<header>
+  <div class="nav">
+    <ul>
           <% if logged_in? %>
-            <li><%= link_to "Index", "#" %></li>
             <li><%= link_to "Profile", current_user %></li>
             <li><%= link_to "Edit", edit_user_path(current_user) %></li>
-            <li><%= link_to "Logout", logout_path, method: :delete %></li>
+            <li><%= link_to "Friends", following_user_path(current_user) %></li>
+            <li class="log"><%= link_to "Logout", logout_path, method: :delete %></li>
           <% else %>
-            <li><%= link_to "Log in", login_path %></li>
+            <li><%= link_to "Home", root_path %></li>
+            <li class="log"><%= link_to "Log in", login_path %></li>
           <% end %>
-      </ul>
-    </nav>
+    </ul>
   </div>
 </header>

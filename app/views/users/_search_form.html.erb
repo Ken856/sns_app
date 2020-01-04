@@ -1,0 +1,6 @@
+<%= search_form_for @q do |f| %>
+  <%= f.label :name_cont, "名前" %>
+  <%= f.search_field :name_cont %>
+
+  <div class="actions"><%= f.submit "検索" %></div>
+<% end %>
