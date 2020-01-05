@@ -15,6 +15,7 @@ gem 'bcrypt'
 gem 'faker'
 gem 'kaminari'
 gem 'ransack'
+gem 'react-rails'
 
 group :development, :test do
   gem 'rspec-rails'

@@ -46,15 +46,9 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
-  def following
+  def top
     @user = User.find(params[:id])
     @users = @user.following.all
-  end
-
-  def followers
-    @title = "Fllowers"
-    @user = User.find(params[:id])
-    @users = @user.followers.page(params[:page])
   end
 
   private
