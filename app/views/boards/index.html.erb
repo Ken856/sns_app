@@ -1,0 +1,16 @@
+<% provide(:title, 'Boards') %>
+<h1>掲示板</h1>
+  <div class="form-link">
+    <%= link_to "新しいスレッドを作る", new_board_path %>
+  </div>
+
+<h2>スレッド一覧</h2>
+  <ul class="boards">
+    <% @boards.each do |board| %>
+      <li>
+        <%= link_to board.title, board %>
+      </li>
+    <% end %>
+  </ul>
+<%= paginate @boards %>
+</div>

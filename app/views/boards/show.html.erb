@@ -1,0 +1,30 @@
+<h1>title: <%= @board.title %></h1>
+
+
+<ul class="responce">
+  <% @posts.each.with_index(1) do |post, i| %>
+  <li>
+    <%= i %>.
+    <%= link_to post.user.name, post.user %> :
+    <%= post.created_at %>
+    <p><%= post.body %></p>
+  </li>
+  <% end %>
+</ul>
+
+<div class="row">
+  <div class-"col">
+    <%= form_with model: @post, url: posts_path, local: true do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+        <div class="form-group">
+          <%= f.label :body %>
+          <%= f.text_field :body %>
+        </div>
+        <%= hidden_field_tag :user_id, current_user.id %>
+        <%= hidden_field_tag :board_id, @board.id %>
+        <div class="form-group">
+          <%= f.submit %>
+        </div>
+    <% end %>
+  </div>
+</div>

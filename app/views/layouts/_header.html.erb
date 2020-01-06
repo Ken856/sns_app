@@ -3,7 +3,8 @@
     <ul>
           <% if logged_in? %>
           <li><%= link_to "TOP", top_user_path(current_user) %></li>
-            <li class="log"><%= link_to "Logout", logout_path, method: :delete %></li>
+          <li><%= link_to "Board", boards_path %></li>
+          <li class="log"><%= link_to "Logout", logout_path, method: :delete %></li>
           <% else %>
             <li><%= link_to "Home", root_path %></li>
             <li class="log"><%= link_to "Log in", login_path %></li>
