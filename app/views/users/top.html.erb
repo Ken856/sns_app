@@ -1,8 +1,17 @@
 <% provide(:title, "Top") %>
+
 <div class="profile" %>
   <h1>Your Profile</h1>
   <%= render "profile" %>
 </div>
+
+<!-- <div class="group-chat">
+  <h1>GROUP</h1>
+  <%# <% unless current_user?(@user) %> %>
+    <%# <%= render "talk_form" %> %>
+  <%# <% end %> %>
+</div> -->
+
 <div class="friends">
   <h1>Your Friends</h1>
   <%= render "friends" %>

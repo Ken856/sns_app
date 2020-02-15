@@ -1,0 +1,6 @@
+<div class="room-form">
+  <%= form_with model: Room.new, local: true do |f| %>
+    <%= hidden_field_tag :user_id, @user.id %>
+    <%= f.submit "TALK" %>
+  <% end %>
+</div>

@@ -11,6 +11,9 @@ Rails.application.routes.draw do
     end
   end
   resources :relationships, only: [:create, :destroy]
-  resources :boards, only: [:index, :show, :new, :create] 
+  resources :boards, only: [:index, :show, :new, :create]
   resources :posts, only: [:create]
+  resources :rooms
+  resources :messages, only: [:create]
+  mount ActionCable.server => '/cable'
 end

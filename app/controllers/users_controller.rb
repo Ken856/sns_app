@@ -8,6 +8,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @room = current_user.personal_chat_room(@user)
+    #@new_room = Room.find_or_initialize_by(id: @chat_room)
   end
 
   def new
@@ -15,11 +17,11 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
-    if @user.save
-      log_in @user
+    user = User.new(user_params)
+    if user.save
+      log_in user
       flash[:notice] = "登録が完了しました。"
-      redirect_to @user
+      redirect_to user
     else
       render :new
     end
@@ -30,10 +32,10 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
-    if @user.update_attributes(user_params)
+    user = User.find(params[:id])
+    if user.update_attributes(user_params)
       flash[:notice] = "保存しました"
-      redirect_to @user
+      redirect_to user
     else
       render 'edit'
     end

@@ -2,3 +2,11 @@
 <h1><%= render "profile" %></h1>
 <%= link_to "Edit", edit_user_path(current_user)  if current_user?(@user)%>
 <%= render "follow_form" %>
+
+<% if !current_user?(@user) && current_user.following?(@user) %>
+  <% if @room %>
+    <%= link_to "TALK", room_path(@room) %>
+  <% else %>
+    <%= render "talk_form" %>
+  <% end %>
+<% end %>
