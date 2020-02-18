@@ -1,0 +1,25 @@
+<div class="row">
+ <div class-"col">
+   <%= form_with model: @group, local: true do |f| %>
+     <%= render 'shared/error_messages', object: f.object %>
+
+   <div class="form-group">
+     <%= f.label :group_name %>
+     <%= f.text_field :group_name %>
+   </div>
+
+   <div class="form-group">
+     <%= f.label "メンバーを選択する" %>
+     <%= f.collection_check_boxes :user_ids, @followings, :id, :name, include_hidden: false do |b| %>
+       <%= b.check_box %>
+       <%= b.label %>
+     <% end %>
+   </div>
+
+   <div class="form-group">
+     <%= f.submit %>
+   </div>
+  <% end %>
+
+ </div>
+</div>

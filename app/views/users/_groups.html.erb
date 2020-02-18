@@ -1,0 +1,11 @@
+<div class="group-form">
+  <%= link_to "新しいグループを作る", new_group_path %>
+</div>
+
+<div class="group-list">
+  <% @groups.each do |group| %>
+    <div class="one-group">
+      <%= link_to group.group_name, group %>
+    </div>
+  <% end %>
+</div>

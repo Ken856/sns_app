@@ -1,0 +1,17 @@
+<div class="group-name">
+  <%= @group.group_name %>
+</div>
+
+<div class="my-name">
+  <%= link_to current_user.name, current_user %>
+</div>
+
+<div class="group-members">
+  <% @members.each do |m| %>
+  <div class="group-member">
+    <% unless current_user?(m) %>
+      <%= link_to m.name, m %>
+    <% end %>
+  </div>
+  <% end %>
+</div>

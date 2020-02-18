@@ -50,6 +50,7 @@ class UsersController < ApplicationController
 
   def top
     @user = User.find(params[:id])
+    @groups = current_user.groups.all
     @users = @user.following.all
   end
 

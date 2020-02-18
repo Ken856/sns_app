@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :user_groups
+  has_many :groups, through: :user_groups
   has_many :messages, dependent: :destroy
   has_many :user_rooms, dependent: :destroy
   has_many :rooms, through: :user_rooms
