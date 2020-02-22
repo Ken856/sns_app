@@ -1,13 +1,19 @@
 <h1 class="room-title">トーク一覧</h1>
 
 <div class="rooms-list">
-  <% @rooms.each do |room| %>
-    <% room.users.each do |user| %>
-      <% unless user == current_user %>
-      <div class="personal-chat">
-        <%= link_to user.name, room %>
-      </div>
-      <% end %>
-    <% end %>
+  <% @groups.each do |group| %>
+    <div class="group-chat">
+    <%= link_to group.group_name, group.room %>
+    </div>
   <% end %>
+
+  <% @rooms.each do |room| %>
+      <% room.users.each do |user| %>
+           <% unless user == current_user %>
+             <div class="personal-chat">
+               <%= link_to user.name, room %>
+             </div>
+           <% end %>
+         <% end %>
+      <% end %>
 </div>

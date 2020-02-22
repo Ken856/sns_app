@@ -1,0 +1,9 @@
+<div class="room-form">
+  <%= form_with model: Room.new, local: true do |f| %>
+    <% @users.each do |user| %>
+      <%= hidden_field_tag "user_id[]", user.id %>
+    <% end %>
+    <%= hidden_field_tag :room_name, @group.group_name %>
+    <%= f.submit "TALK" %>hoge
+  <% end %>
+</div>

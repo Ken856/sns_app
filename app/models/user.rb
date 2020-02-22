@@ -68,6 +68,7 @@ class User < ApplicationRecord
     user_rooms_intersect(other_user).first
   end
 
+
   private
     def user_rooms_intersect(other_user)
       my_talking = self.user_rooms.all.pluck(:room_id)

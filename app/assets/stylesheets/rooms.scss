@@ -10,9 +10,8 @@
   background-color: #696969;
   position: fixed;
   top: 0px;
+  z-index: 3;
 }
-
-
 
 .rooms-list {
   margin-top: 170px;
@@ -25,8 +24,24 @@
 .room-title {
   background-color: white;
   width: 100%;
+  padding: 5px;
   position: fixed;
   top: 100px;
+  z-index: 2;
+}
+
+.room-delete-link {
+  font-size: 5px;
+}
+
+#message-container {
+  height: auto;
+  padding: 10px;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  position: relative;
+  top: 70px;
+  z-index: 1;
 }
 
 #chat-footer {
@@ -36,11 +51,15 @@
   border-top: 2px solid gray;
   position: fixed;
   bottom: 0;
+  z-index: 2;
 }
 
-#message-container {
-  height: auto;
-  padding: 10px;
-  margin-top: 100px;
-  margin-bottom: 100px;
+.disabled {
+  background-color: #6c757d;
+  border-color: #6c757d;
+  cursor: auto;
+}
+
+#message_content {
+  resize: none;
 }

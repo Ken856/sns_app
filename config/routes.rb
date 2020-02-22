@@ -17,6 +17,5 @@ Rails.application.routes.draw do
   resources :messages, only: [:create]
   resources :posts, only: [:new]
   resources :groups
-
   mount ActionCable.server => '/cable'
 end

@@ -7,11 +7,19 @@
 </div>
 
 <div class="group-members">
-  <% @members.each do |m| %>
+  <% @users.each do |user| %>
   <div class="group-member">
-    <% unless current_user?(m) %>
-      <%= link_to m.name, m %>
+    <% unless current_user?(user) %>
+      <%= link_to user.name, user %>
     <% end %>
   </div>
+  <% end %>
+</div>
+
+<div class="group-room-link">
+  <% if @room.nil? %>
+    <%= render "rooms/group_room_form" %>
+  <% else %>
+    <%= link_to "TALK", room_path(@room) %>
   <% end %>
 </div>
