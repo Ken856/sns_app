@@ -1,39 +1,40 @@
 <% provide(:title, "Login") %>
+<div class="login-form">
+  <h1>LOGIN</h1>
 
-<h1>LOGIN</h1>
+  <div class="row">
+    <div class-"col">
+      <%= form_with scope: :session, url: login_path, local: true do |f| %>
 
-<div class="row">
- <div class-"col">
-   <%= form_with scope: :session, url: login_path, local: true do |f| %>
+      <div class="form-group">
+        <%= f.label :email, "メールアドレス"%>
+        <%= f.email_field :email %>
+      </div>
 
-  <div class="form-group">
-     <%= f.label :email, "メールアドレス"%>
-     <%= f.email_field :email %>
-  </div>
+      <div class="form-group">
+        <%= f.label :password, "パスワード" %>
+        <%= f.password_field :password %>
+      </div>
 
-   <div class="form-group">
-     <%= f.label :password, "パスワード" %>
-     <%= f.password_field :password %>
-   </div>
+      <div class="form-group">
+        <%= f.label :password_confirmation, " パスワードの確認" %>
+        <%= f.password_field :password_confirmaton %>
+      </div>
 
-   <div class="form-group">
-     <%= f.label :password_confirmation, " パスワードの確認" %>
-     <%= f.password_field :password_confirmaton %>
-   </div>
+      <div class= "form-group">
+        <%= f.label :remember_me, class: "checkbox inline" do %>
+        <%= f.check_box :remember_me %>
+        <span>Remember me on this computer</span>
+        <% end %>
+      </div>
 
-   <div class= "form-group">
-     <%= f.label :remember_me, class: "checkbox inline" do %>
-       <%= f.check_box :remember_me %>
-       <span>Remember me on this computer</span>
-       <% end %>
+      <div class="form-group">
+        <%= f.submit "LOGIN" %>
+      </div>
+      <% end %>
+
+      <p>新規登録はこちら  <%= link_to "Sign up now!", signup_path %></p>
+
     </div>
-
-   <div class="form-group">
-     <%= f.submit "LOGIN" %>
-   </div>
-  <% end %>
-
-   <p>新規登録はこちら  <%= link_to "Sign up now!", signup_path %></p>
-
- </div>
+  </div>
 </div>

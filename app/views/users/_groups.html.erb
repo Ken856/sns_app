@@ -5,7 +5,7 @@
 <div class="group-list">
   <% @groups.each do |group| %>
     <div class="one-group">
-      <%= link_to group.group_name, group %>
+        <%= render_to_info(group, :group_image, "default_group.png", :group_name, group) %>
     </div>
   <% end %>
 </div>

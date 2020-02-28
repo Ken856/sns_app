@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.0'
-
 gem 'rails', '~> 6.0.0'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
@@ -15,7 +14,11 @@ gem 'bcrypt'
 gem 'faker'
 gem 'kaminari'
 gem 'ransack'
-gem 'react-rails'
+gem 'image_processing'
+gem 'mini_magick'
+gem 'pry-rails'
+gem 'pry-byebug'
+gem 'gon'
 
 group :development, :test do
   gem 'rspec-rails'

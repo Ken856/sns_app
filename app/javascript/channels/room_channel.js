@@ -1,7 +1,7 @@
 import consumer from "./consumer"
 
   document.addEventListener('turbolinks:load', () => {
-    window.messageContainer = document.getElementById('message-container')
+    window.messageContainer = document.getElementById('message-container');
     window.messageContent = document.getElementById('message_content');
 
     window.scrollToBottom = () => {

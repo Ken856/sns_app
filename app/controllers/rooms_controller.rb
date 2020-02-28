@@ -13,6 +13,7 @@ class RoomsController < ApplicationController
     #@messages = Message.includes(:user, :room).order(:id)
     @messages = @room.messages.all
     @message = Message.new
+    gon.current_user_id = current_user.id
   end
 
   def create

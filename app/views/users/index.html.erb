@@ -1,1 +1,6 @@
 <% provide(:title, 'All users') %>
+<div class="searched-user">
+  <% @users.each do |user| %>
+    <%= link_to user.name, user %>
+  <% end %>
+</div>

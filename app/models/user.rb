@@ -1,17 +1,19 @@
 class User < ApplicationRecord
+  extend Search
+  has_one_attached :avatar
   has_many :user_groups
   has_many :groups, through: :user_groups
   has_many :messages, dependent: :destroy
   has_many :user_rooms, dependent: :destroy
   has_many :rooms, through: :user_rooms
   has_many :active_relationships,
-            class_name: "Relationship",
-            foreign_key: "follower_id",
-            dependent: :destroy
+  class_name: "Relationship",
+  foreign_key: "follower_id",
+  dependent: :destroy
   has_many :passive_relationships,
-            class_name:  "Relationship",
-            foreign_key: "followed_id",
-            dependent: :destroy
+  class_name:  "Relationship",
+  foreign_key: "followed_id",
+  dependent: :destroy
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
   has_many :boards
@@ -25,7 +27,7 @@ class User < ApplicationRecord
 
   def self.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
-                                                  BCrypt::Engine.cost
+    BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
   end
 
@@ -70,18 +72,10 @@ class User < ApplicationRecord
 
 
   private
-    def user_rooms_intersect(other_user)
-      my_talking = self.user_rooms.all.pluck(:room_id)
-      your_talking = other_user.user_rooms.all.pluck(:room_id)
-      my_talking & your_talking
-    end
-
-  def can_access?(room)
-    if self.following?
-      true
-    else
-      false
-    end
+  def user_rooms_intersect(other_user)
+    my_talking = self.user_rooms.all.pluck(:room_id)
+    your_talking = other_user.user_rooms.all.pluck(:room_id)
+    my_talking & your_talking
   end
 
 end

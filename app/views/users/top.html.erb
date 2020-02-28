@@ -1,16 +1,26 @@
 <% provide(:title, "Top") %>
-
-<div class="profile" %>
+<div id="top">
   <h1>Your Profile</h1>
-  <%= render "profile" %>
-</div>
 
-<div class="groups">
-  <h1 class="groups-title">Groups</h1>
-  <%= render "groups" %>
-</div>
+  <div class="top-user-info">
+    <%= render_to_info(@user, :avatar, "default_user.png", :name, @user) %>
+  </div>
 
-<div class="friends">
-  <h1 class="friends-title">Your Friends</h1>
-  <%= render "friends" %>
+  <div class="top-groups">
+    <h1 class="groups-title">Groups</h1>
+    <%= render "groups" %>
+  </div>
+
+  <div class="top-friends">
+    <h1 class="friends-title">Your Friends</h1>
+    <div class="friends-search-form">
+      <%= render "search_form" %>
+    </div>
+    <div class="search-result">
+      <% @searches.each do |user| %>
+      <%= render_to_info(user, :avatar, "default_user.png", :name, user) %>
+      <% end %>
+    </div>
+    <%= render "friends" %>
+  </div>
 </div>

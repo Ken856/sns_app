@@ -1,7 +1,7 @@
 <div class="friends" %>
-  <% @users.each_with_index do |user, i| %>
-    <div class="friend-i">
-      <%= link_to user.name, user %>
+  <% @users.each do |user| %>
+    <div class="friend">
+      <%= render_to_info(user, :avatar, "default_user.png", :name, user) %>
     </div>
   <% end %>
 </div>

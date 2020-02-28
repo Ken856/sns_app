@@ -1,15 +1,13 @@
-<div class="row">
-  <div class-"col">
-    <%= form_with model: @board, url: boards_path, local: true do |f| %>
-      <%= render 'shared/error_messages', object: f.object %>
-        <div class="form-group">
-          <%= f.label :title %>
-          <%= f.text_field :title %>
-        </div>
-        <%= hidden_field_tag :user_id, current_user.id %>
-        <div class="form-group">
-          <%= f.submit %>
-        </div>
-    <% end %>
+<div id="boards-form">
+  <%= form_with model: @board, url: boards_path, local: true do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
   </div>
+  <%= hidden_field_tag :user_id, current_user.id %>
+  <div class="form-group">
+    <%= f.submit %>
+  </div>
+  <% end %>
 </div>

@@ -1,0 +1,7 @@
+<div class="avatar">
+  <% if info.send(image).attached? %>
+    <%= image_tag info.send(image).variant(resize: "50x40").processed %>
+  <% else %>
+    <%= image_tag(default_image, :size => "35x35") %>
+  <% end %>
+</div>

@@ -3,6 +3,7 @@ class BoardsController < ApplicationController
 
   def index
     @boards = Board.page(params[:page]).per(10)
+    @searches = Board.search(params[:search], "title")
   end
 
   def show

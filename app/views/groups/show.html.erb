@@ -1,25 +1,31 @@
-<div class="group-name">
-  <%= @group.group_name %>
-</div>
+<% provide(:title, "Group") %>
+<div id="group">
+  <div class="group-name">
+    <h1><%= @group.group_name %>
+      <%= render "shared/image", info: @group, image: :group_image, default_image: "default_group.png" %>
+    </h1>
+  </div>
 
-<div class="my-name">
-  <%= link_to current_user.name, current_user %>
-</div>
 
-<div class="group-members">
-  <% @users.each do |user| %>
-  <div class="group-member">
-    <% unless current_user?(user) %>
-      <%= link_to user.name, user %>
+  <div class="my-name">
+    <%= render_to_info(current_user, :avatar, "default_user.png", :name, current_user) %>
+  </div>
+
+  <div class="group-members">
+    <% @users.each do |user| %>
+    <div class="group-member">
+      <% unless current_user?(user) %>
+      <%= render_to_info(user, :avatar, "default_user.png", :name, user) %>
+      <% end %>
+    </div>
     <% end %>
   </div>
-  <% end %>
-</div>
 
-<div class="group-room-link">
-  <% if @room.nil? %>
+  <div class="group-room-link">
+    <% if @room.nil? %>
     <%= render "rooms/group_room_form" %>
-  <% else %>
+    <% else %>
     <%= link_to "TALK", room_path(@room) %>
-  <% end %>
+    <% end %>
+  </div>
 </div>

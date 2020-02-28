@@ -17,10 +17,6 @@
   margin-top: 170px;
 }
 
-.chat-room {
-  padding: 5px;
-}
-
 .room-title {
   background-color: white;
   width: 100%;
@@ -36,9 +32,9 @@
 
 #message-container {
   height: auto;
-  padding: 10px;
-  margin-top: 100px;
-  margin-bottom: 100px;
+  padding-left: 10px;
+  margin-top: 110px;
+  margin-bottom: 110px;
   position: relative;
   top: 70px;
   z-index: 1;
@@ -62,4 +58,21 @@
 
 #message_content {
   resize: none;
+}
+
+.room-info {
+  position: relative;
+}
+
+.room-info-avatar {
+  display: inline-block;
+}
+
+.room-info-name {
+  @display: inline-block;
+  // box-align: center;
+  position: absolute;
+  top: 10px;
+  left: 40px;
+  // padding-bottom: 10px;
 }
