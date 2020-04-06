@@ -24,6 +24,7 @@ class User < ApplicationRecord
   validates :email, presence: true, length: {maximum: 255}, format: {with: VALID_EMAIL_REGEX}, uniqueness: {case_sensitive: false}
   has_secure_password
   validates :password, presence: true, length: {minimum: 6}, allow_nil: true
+  
 
   def self.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
@@ -72,10 +73,10 @@ class User < ApplicationRecord
 
 
   private
-  def user_rooms_intersect(other_user)
-    my_talking = self.user_rooms.all.pluck(:room_id)
-    your_talking = other_user.user_rooms.all.pluck(:room_id)
-    my_talking & your_talking
-  end
+    def user_rooms_intersect(other_user)
+      my_talking = self.user_rooms.all.pluck(:room_id)
+      your_talking = other_user.user_rooms.all.pluck(:room_id)
+      my_talking & your_talking
+    end
 
 end

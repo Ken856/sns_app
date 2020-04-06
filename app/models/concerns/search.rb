@@ -3,7 +3,7 @@ module Search
     if search
       where("#{column} LIKE ?", "%#{search}%")
     else
-      none
+      self.none
     end
   end
 end
