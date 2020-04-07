@@ -2,7 +2,7 @@
 <div id="board">
   <h1>title: <%= @board.title %></h1>
   <ul class="responce">
-    <% @posts.each.with_index(1) do |post, i| %>
+    <% @posts.each do |post| %>
     <li>
       <% if !post.user.nil? %>
          <%= link_to post.user.name, post.user %> :

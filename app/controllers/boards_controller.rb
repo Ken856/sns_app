@@ -22,7 +22,7 @@ class BoardsController < ApplicationController
       flash[:notice] = "スレを作りました"
       redirect_to @board
     else
-      render :new
+      render new_board_path
     end
   end
 

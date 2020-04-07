@@ -46,7 +46,7 @@ class UsersController < ApplicationController
 
   def top
     @user = User.find(params[:id])
-    @groups = current_user.groups.all
+    @groups = @user.groups.all
     @users = @user.following.all
     @searches = User.search(params[:search], "name")
   end

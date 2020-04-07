@@ -17,10 +17,10 @@ class RoomsController < ApplicationController
   end
 
   def create
-      other_user = User.find(params[:user_id])
-      room = Room.create(room_params)
-      UserRoom.create_user_rooms(current_user, other_user, room)
-      redirect_to room
+      @other_user = User.find(params[:user_id])
+      @room = Room.create(room_params)
+      UserRoom.create_user_rooms(current_user, @other_user, @room)
+      redirect_to @room
   end
 
   def destroy

@@ -5,10 +5,11 @@ class PostsController < ApplicationController
     @post = @board.posts.new(post_params)
     @post.user_id = current_user.id
     if @post.save
-      flash[:success] = "成功"
+      flash[:success] = "コメントしました。"
       redirect_to @board
     else
-      render "boards/show"
+      flash[:dager] = "コメントに失敗しました。"
+      redirect_to @board
     end
   end
 

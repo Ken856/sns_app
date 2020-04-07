@@ -7,17 +7,17 @@
       <%= form_with scope: :session, url: login_path, local: true do |f| %>
 
       <div class="form-group">
-        <%= f.label :email, "メールアドレス"%>
+        <%= f.label :email%>
         <%= f.email_field :email %>
       </div>
 
       <div class="form-group">
-        <%= f.label :password, "パスワード" %>
+        <%= f.label :password %>
         <%= f.password_field :password %>
       </div>
 
       <div class="form-group">
-        <%= f.label :password_confirmation, " パスワードの確認" %>
+        <%= f.label :password_confirmation %>
         <%= f.password_field :password_confirmaton %>
       </div>
 
