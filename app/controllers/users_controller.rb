@@ -4,8 +4,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @room = current_user.personal_chat_room(@user)
-    #@new_room = Room.find_or_initialize_by(id: @chat_room)
   end
 
   def new
@@ -47,13 +45,13 @@ class UsersController < ApplicationController
   def top
     @user = User.find(params[:id])
     @groups = @user.groups.all
-    @users = @user.following.all
+    @friends = @user.following.all
     @searches = User.search(params[:search], "name")
   end
 
   private
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation, :avatar)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :avatar, :introduction)
     end
 
     def correct_user

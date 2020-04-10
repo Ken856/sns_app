@@ -1,21 +1,25 @@
 <% provide(:title, "Group") %>
 <div id="group">
-  <div class="group-name">
-    <h1><%= @group.group_name %>
-      <%= render "shared/image", info: @group, image: :group_image, default_image: "default_group.png" %>
-    </h1>
-  </div>
-
+  <h1 class="group">
+    <div class="group-name">
+      <%= @group.group_name %>
+    </div>
+    <div class="group-image">
+      <%=  render "shared/image", object: @group %>
+    </div>
+  </h1>
 
   <div class="my-name">
-    <%= render_to_info(current_user, :avatar, "default_user.png", :name, current_user) %>
+    <div class="profile-wrap">
+      <%= render_to_profile(current_user) %>
+    </div>
   </div>
 
   <div class="group-members">
     <% @users.each do |user| %>
-    <div class="group-member">
+    <div class="profile-wrap">
       <% unless current_user?(user) %>
-      <%= render_to_info(user, :avatar, "default_user.png", :name, user) %>
+      <%= render_to_profile(user) %>
       <% end %>
     </div>
     <% end %>

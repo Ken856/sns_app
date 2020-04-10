@@ -4,18 +4,18 @@
   <div class="rooms-list">
     <div class="group-room">
       <% @groups.each do |group| %>
-      <div class="group-chat">
-        <%= render_to_info(group, :group_image, "default_group.png", :group_name, group.room) %>
+      <div class="profile-wrap">
+        <%= render_to_profile(group, link: group.room) %>
       </div>
       <% end %>
     </div>
 
-    <div class="private-room">
+    <div class="personal-room">
       <% @rooms.each do |room| %>
       <% room.users.each do |user| %>
       <% unless user == current_user %>
-      <div class="personal-chat">
-        <%= render_to_info(user, :avatar, "default_user.png", :name, room) %>
+      <div class="profile-wrap">
+        <%= render_to_profile(user, link: room) %>
       </div>
       <% end %>
       <% end %>

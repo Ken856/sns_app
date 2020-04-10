@@ -8,7 +8,7 @@ RSpec.describe  Group, type: :system do
   end
 
   scenario 'create group with valid information' do
-    log_in_as :user
+    log_in_as @user
     visit top_user_path(@user)
     click_on "新しいグループを作る"
     visit new_group_path
@@ -18,6 +18,6 @@ RSpec.describe  Group, type: :system do
     expect(page).to have_content 'グループを作成しました'
     click_on "ホゲホゲ"
     click_on "TALK"
-    expect(page).to have_selector 'h1', text: "ホゲホゲ"
+    expect(page).to have_content "ホゲホゲ"
   end
 end

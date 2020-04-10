@@ -79,4 +79,12 @@ RSpec.describe User, type: :model do
       end
     end
 
+    describe "invalid introduction" do
+      it "is invalid with too long introduction" do
+        user = FactoryBot.build(:user, introduction: "a" * 251)
+        user.valid?
+        expect(user.errors[:introduction]).to include("は250文字以内で入力してください")
+      end
+    end
+
 end

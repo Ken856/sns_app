@@ -1,17 +1,11 @@
 <% provide(:title, "Chat-room") %>
 <div class="chat-room">
-  <h1 class="room-title">
-    <% if !@room.group.nil? %>
-    <%= link_to @room.group.group_name, group_path(@room.group.id) %>
-    <% else %>
-    <% @user_rooms.each do |user_room| %>
-    <% if user_room.user != current_user %>
-    <%= link_to user_room.user.name, user_room.user %>
-    <% end %>
-    <% end %>
-    <% end %>
+  <div class="room-title">
+    <div class="profile-wrap">
+      <%= room_title(@room, @user_rooms) %>
+    </div>
     <%= link_to "消去", room_path(@room.id), method: :delete , class: "room-delete-link"%>
-  </h1>
+  </div>
 
   <div id="message-container", data-room_id="<%= @room.id %>">
     <%= render @messages %>

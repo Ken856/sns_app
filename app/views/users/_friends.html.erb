@@ -1,7 +1,8 @@
 <div class="friends" %>
-  <% @users.each do |user| %>
-    <div class="friend">
-      <%= render_to_info(user, :avatar, "default_user.png", :name, user) %>
+  <% @friends.each do |friend| %>
+    <div class="profile-wrap">
+      <%= render_to_profile(friend) %>
+      <%= render "introduction", user: friend %>
     </div>
   <% end %>
 </div>

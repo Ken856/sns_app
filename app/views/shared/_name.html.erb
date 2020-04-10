@@ -1,3 +1,7 @@
-<div class="name">
-  <%= link_to info.send(name), link %>
+<% if link_cancel %>
+<%= object.naming %>
+<% else %>
+<div class="naming">
+  <%= link_to object.naming, link %>
 </div>
+<% end %>

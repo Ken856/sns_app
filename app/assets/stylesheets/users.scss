@@ -2,13 +2,31 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-// .groups-title {
-//  margin: 0px;
-// }
-//
-// .friends-title {
-//   margin-top: 0px;
-// }
+//render_to_Profileメソッドは、Profile-wrapクラスでラップすべし！！
+.profile-wrap {
+  display: flex;
+}
+
+.profile-name {
+  margin-left: 7px;
+  width: 130px;
+}
+
+.naming {
+  padding: 5px;
+}
+
+.profile-image {
+  margin-left: 5px;
+  width: 35px;
+}
+
+//render "shared/introduction"は、render_to_ProfileとともにProfile-wrapクラスでラップすべし。
+.profile-introduction {
+  opacity: 0.7;
+  padding: 5px;
+  // width: 80px;
+}
 
 .search-result {
   border-bottom: 2px solid #333333;

@@ -24,6 +24,7 @@ class User < ApplicationRecord
   validates :email, presence: true, length: {maximum: 255}, format: {with: VALID_EMAIL_REGEX}, uniqueness: {case_sensitive: false}
   has_secure_password
   validates :password, presence: true, length: {minimum: 6}, allow_nil: true, confirmation: true
+  validates :introduction, length: {maximum: 250}
 
 
   def self.digest(string)
@@ -62,21 +63,17 @@ class User < ApplicationRecord
     following.include?(other_user)
   end
 
-  # def talking
-  #   duplicate_id = "SELECT room_id FROM user_rooms GROUP BY room_id HAVING  COUNT(*) > 1"
-  #   user_rooms.where("user_id = :user_id AND room_id IN (#{duplicate_id})", user_id: self.id)
-  # end
 
-  def personal_chat_room(other_user)
-    user_rooms_intersect(other_user).first
+  def naming
+    name
   end
 
+  def picture
+    avatar
+  end
 
-  private
-    def user_rooms_intersect(other_user)
-      my_talking = self.user_rooms.all.pluck(:room_id)
-      your_talking = other_user.user_rooms.all.pluck(:room_id)
-      my_talking & your_talking
-    end
+  def default_picture
+    "default_user.png"
+  end
 
 end

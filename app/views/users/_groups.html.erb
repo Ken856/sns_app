@@ -4,8 +4,8 @@
 
 <div class="group-list">
   <% @groups.each do |group| %>
-    <div class="one-group">
-        <%= render_to_info(group, :group_image, "default_group.png", :group_name, group) %>
+    <div class="profile-wrap">
+      <%= render_to_profile(group) %>
     </div>
   <% end %>
 </div>

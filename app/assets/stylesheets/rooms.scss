@@ -17,17 +17,25 @@
   margin-top: 170px;
 }
 
+// ここからShowページ
 .room-title {
   background-color: white;
   width: 100%;
-  padding: 5px;
+  border: 2px solid #333333;
+  padding: 0px;
   position: fixed;
   top: 100px;
   z-index: 2;
 }
 
+.room-profile {
+  padding: 0px;
+}
+
 .room-delete-link {
   font-size: 5px;
+  margin: 2px;
+  padding: 2px;
 }
 
 #message-container {
