@@ -15,26 +15,22 @@ import consumer from "./consumer"
       consumer.subscriptions.create( {channel: "RoomChannel", room: messageContainer.dataset.room_id}, {
         connected() {
           console.log("OK!!!!");
-          console.log(messageContainer.dataset.room_id)
         },
 
         disconnected() {
         },
 
         reject() {
-
         },
+
         //ここを制御する？
         received(data) {
         if (data['room_id'] ==  messageContainer.dataset.room_id ) {
             messageContainer.insertAdjacentHTML('beforeend', data['message']);
             scrollToBottom();
-            console.log(data['room_id'])
           }
         }
     })
-
-    //以下ページの挙動
 
     const documentElement = document.documentElement;
 

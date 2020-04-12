@@ -24,5 +24,14 @@ RSpec.describe  User, type: :system do
       expect(page).to have_content ("Invalid email/password combination")
       expect(page).to_not have_link 'Logout'
     end
+
+    scenario "login with cookies" do
+      visit login_path
+      fill_in 'Email', with: 'hoge@example.com'
+      fill_in 'Password', with: 'hogehoge'
+      check "Remember me on this computer"
+      click_button 'LOGIN'
+      expect(page).to have_link "Logout"
+    end
   end
 end
