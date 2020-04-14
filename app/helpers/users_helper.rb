@@ -8,5 +8,4 @@ module UsersHelper
     your_talking = other_user.user_rooms.all.pluck(:room_id)
     my_talking & your_talking
   end
-
 end

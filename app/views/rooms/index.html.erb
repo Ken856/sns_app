@@ -5,7 +5,9 @@
     <div class="group-room">
       <% @groups.each do |group| %>
       <div class="profile-wrap">
+        <% if current_user.is_activated_by?(group) %>
         <%= render_to_profile(group, link: group.room) %>
+        <% end %>
       </div>
       <% end %>
     </div>
@@ -13,7 +15,7 @@
     <div class="personal-room">
       <% @rooms.each do |room| %>
       <% room.users.each do |user| %>
-      <% unless user == current_user %>
+      <% unless current_user?(user) %>
       <div class="profile-wrap">
         <%= render_to_profile(user, link: room) %>
       </div>
@@ -23,3 +25,5 @@
     </div>
   </div>
 </div>
+
+current_user.groups.all.

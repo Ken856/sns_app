@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_08_032425) do
+ActiveRecord::Schema.define(version: 2020_04_14_010540) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,19 @@ ActiveRecord::Schema.define(version: 2020_04_08_032425) do
     t.integer "room_id"
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.integer "notifier_id", null: false
+    t.integer "notified_id", null: false
+    t.integer "group_id"
+    t.string "action", default: "", null: false
+    t.boolean "checked", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["group_id"], name: "index_notifications_on_group_id"
+    t.index ["notified_id"], name: "index_notifications_on_notified_id"
+    t.index ["notifier_id"], name: "index_notifications_on_notifier_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.integer "user_id"
     t.integer "board_id"
@@ -90,6 +103,7 @@ ActiveRecord::Schema.define(version: 2020_04_08_032425) do
     t.integer "group_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "activated", default: false, null: false
   end
 
   create_table "user_rooms", force: :cascade do |t|

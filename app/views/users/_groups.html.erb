@@ -3,9 +3,11 @@
 </div>
 
 <div class="group-list">
-  <% @groups.each do |group| %>
+  <% @user_groups.each do |user_group| %>
     <div class="profile-wrap">
-      <%= render_to_profile(group) %>
+      <% if user_group.activated? %>
+        <%= render_to_profile(user_group.group) %>
+      <% end %>
     </div>
   <% end %>
 </div>

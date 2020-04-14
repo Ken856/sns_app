@@ -3,8 +3,9 @@
     <ul>
       <% if logged_in? %>
         <li><%= link_to "TOP", top_user_path(current_user) %></li>
-        <li><%= link_to "Board", boards_path %></li>
-        <li><%= link_to "chat", rooms_path %></li>
+        <li><%= link_to "BOARD", boards_path %></li>
+        <li><%= link_to "CHAT", rooms_path %></li>
+        <li><%= link_to "通知", notifications_path %></li>
         <li class="log"><%= link_to "Logout", logout_path, method: :delete %></li>
       <% else %>
         <li><%= link_to "Home", root_path %></li>

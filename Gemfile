@@ -16,8 +16,6 @@ gem 'kaminari'
 gem 'ransack'
 gem 'image_processing'
 gem 'mini_magick'
-# gem 'pry-rails'
-# gem 'pry-byebug'
 gem 'gon'
 
 group :development, :test do

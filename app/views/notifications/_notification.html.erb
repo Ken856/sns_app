@@ -1,0 +1,24 @@
+<% notifier = notification.notifier %>
+<% notified = notification.notified %>
+<div class="notification">
+
+  <div class="profile-wrap">
+    <%= render_to_profile(notifier) %>
+  <span class="notification-safix">
+    <%= "さんが、" %>
+
+    <% case notification.action %>
+    <% when "follow" %>
+      <%= "あなたをフォローしました。" %>
+    <% when "group" %>
+     <%= "「#{notification.group.group_name}」" %>
+      <%= "にあなたを招待しました。" %>
+      <% current_user_group = notification.group.user_groups.select {|user_group| user_group.user_id == current_user.id}.first %>
+      <span class="permit">
+        <%= link_to "参加する", user_group_path(current_user_group), method: :patch, class: 'permit-button' %>
+      </span>
+    <% end %>
+  </span>
+  </div>
+
+</div>

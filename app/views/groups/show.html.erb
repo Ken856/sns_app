@@ -14,13 +14,11 @@
       <%= render_to_profile(current_user) %>
     </div>
   </div>
-
   <div class="group-members">
     <% @users.each do |user| %>
     <div class="profile-wrap">
-      <% unless current_user?(user) %>
-      <%= render_to_profile(user) %>
-      <% end %>
+      <% user_room = @group.user_groups.find_by(user_id: user) %>
+      <%= render_to_profile(user) if !current_user?(user) && user_room.activated? %>
     </div>
     <% end %>
   </div>
@@ -30,6 +28,16 @@
     <%= render "rooms/group_room_form" %>
     <% else %>
     <%= link_to "TALK", room_path(@room) %>
+    <% end %>
+  </div>
+
+  <div class="inviting-member">
+    <p>招待中のユーザー</p>
+    <% @users.each do |user| %>
+    <div class="profile-wrap">
+      <% user_room = @group.user_groups.find_by(user_id: user) %>
+      <%= render_to_profile(user) unless current_user?(user) || user_room.activated %>
+    </div>
     <% end %>
   </div>
 </div>
