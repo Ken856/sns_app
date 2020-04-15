@@ -3,7 +3,7 @@ class User < ApplicationRecord
   has_one_attached :avatar
   has_many :user_groups
   has_many :groups, through: :user_groups
-  
+
   has_many :messages, dependent: :destroy
   has_many :user_rooms, dependent: :destroy
   has_many :rooms, through: :user_rooms
@@ -27,6 +27,10 @@ class User < ApplicationRecord
 
   def is_activated_by?(group)
    user_group(group).activated?
+  end
+
+  def leave_group(group)
+    current_user.user_group(group).destroy
   end
 
   def user_group(group)

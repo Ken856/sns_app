@@ -4,7 +4,7 @@
     <div class="profile-wrap">
       <%= room_title(@room, @user_rooms) %>
     </div>
-    <%= link_to "消去", room_path(@room.id), method: :delete , class: "room-delete-link"%>
+     <%= link_to "消去", room_path(@room.id), method: :delete , class: "room-delete-link"%>
   </div>
 
   <div id="message-container", data-room_id="<%= @room.id %>">

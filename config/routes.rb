@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   resources :messages, only: [:create]
   resources :posts, only: [:new]
   resources :groups
-  resources :notifications, only: [:index, :show]
-  resources :user_groups, only: [:update]
+  resources :notifications, only: [:index, :update]
+  resources :user_groups, only: [:update, :destroy]
   mount ActionCable.server => '/cable'
 end

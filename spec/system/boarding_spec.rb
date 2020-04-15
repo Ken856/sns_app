@@ -10,7 +10,7 @@ RSpec.describe  Board, type: :system do
   scenario "create board and first post with valid information" do
     log_in_as @user
     visit top_user_path(@user)
-    click_on "Board"
+    click_on "BOARD"
     click_on "新しいスレッドを作る"
     fill_in "Title", with: "ホゲホゲ"
     click_on "登録する"
@@ -24,7 +24,7 @@ RSpec.describe  Board, type: :system do
   scenario "other_user post with valid information" do
     log_in_as @other_user
     visit top_user_path(@other_user)
-    click_on "Board"
+    click_on "BOARD"
     click_link "#{@board.title}"
     fill_in "Body", with: "これは、スレ主ではないコメントです。"
     click_on "登録する"

@@ -4,6 +4,9 @@
     <div class="group-name">
       <%= @group.group_name %>
     </div>
+    <div class="leave-group">
+        <%= link_to "退会する", user_group_path(current_user.user_group(@group).id), method: :delete %>
+    </div>
     <div class="group-image">
       <%=  render "shared/image", object: @group %>
     </div>

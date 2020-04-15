@@ -1,6 +1,6 @@
 <h1>通知</h1>
 <div class="notified_info">
-  <% if @notifications.any? %>
+  <% if @unchecked_notifications.any? %>
     <%=render @notifications %>
   <% else %>
     <p>現在通知はありません</p>
