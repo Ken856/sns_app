@@ -16,7 +16,7 @@ class GroupsController < ApplicationController
     group = Group.new(group_params)
     if group.save
       room = group.create_room
-      group.invite(current_user.id, true)
+      group.user_groups.create(user_id: current_user.id, activated: true)
       group.users.each do |user|
         Notify.call(current_user, user, "group", group: group) if user != current_user
       end

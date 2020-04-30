@@ -2,8 +2,8 @@ module LoginSupport
   def log_in_as(user)
     visit root_path
     click_on "Log in"
-    fill_in 'Email', with: 'hoge@example.com'
-    fill_in 'Password', with: 'hogehoge'
+    fill_in 'Email', with: user.email
+    fill_in 'Password', with: user.password
     click_on "LOGIN"
   end
 

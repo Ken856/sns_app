@@ -29,7 +29,11 @@ class Notify
         action: action,
         group_id: group&.id
       )
-      notification.save if notification.valid?
+      if notification.valid?
+        notification.save
+      else 
+        raise("baka")
+      end
     end
 end
 

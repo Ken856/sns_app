@@ -11,7 +11,7 @@ class UserGroupsController < ApplicationController
   def destroy
     user_group = UserGroup.find(params[:id])
     user_group.destroy
-    user_group.group.notifications.find_by(notified_id: current_user.id).update_column(:checked, true)
+    user_group.group.notifications.find_by(notified_id: current_user.id)&.update_column(:checked, true)
     flash[:notice] = "退出しました。"
     redirect_to top_user_path(current_user)
   end
